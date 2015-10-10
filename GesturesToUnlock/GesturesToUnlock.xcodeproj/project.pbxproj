@@ -14,6 +14,10 @@
 		EF2D6BBC1BC7AC7500F3D7B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF2D6BBA1BC7AC7500F3D7B3 /* LaunchScreen.storyboard */; };
 		EF2D6BC71BC7AC7500F3D7B3 /* GesturesToUnlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D6BC61BC7AC7500F3D7B3 /* GesturesToUnlockTests.swift */; };
 		EF2D6BD21BC7AC7500F3D7B3 /* GesturesToUnlockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D6BD11BC7AC7500F3D7B3 /* GesturesToUnlockUITests.swift */; };
+		EFA7E4191BC7AEC7008C3A25 /* zzf_password_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA7E4161BC7AEC7008C3A25 /* zzf_password_bg@2x.png */; settings = {ASSET_TAGS = (); }; };
+		EFA7E41A1BC7AEC7008C3A25 /* zzf_password_btn_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA7E4171BC7AEC7008C3A25 /* zzf_password_btn_normal@2x.png */; settings = {ASSET_TAGS = (); }; };
+		EFA7E41B1BC7AEC7008C3A25 /* zzf_password_btn_click@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFA7E4181BC7AEC7008C3A25 /* zzf_password_btn_click@2x.png */; settings = {ASSET_TAGS = (); }; };
+		EFA7E41D1BC7B036008C3A25 /* GesturesToUnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA7E41C1BC7B036008C3A25 /* GesturesToUnlockView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		EF2D6BCD1BC7AC7500F3D7B3 /* GesturesToUnlockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GesturesToUnlockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2D6BD11BC7AC7500F3D7B3 /* GesturesToUnlockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesToUnlockUITests.swift; sourceTree = "<group>"; };
 		EF2D6BD31BC7AC7500F3D7B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFA7E4161BC7AEC7008C3A25 /* zzf_password_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zzf_password_bg@2x.png"; sourceTree = "<group>"; };
+		EFA7E4171BC7AEC7008C3A25 /* zzf_password_btn_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zzf_password_btn_normal@2x.png"; sourceTree = "<group>"; };
+		EFA7E4181BC7AEC7008C3A25 /* zzf_password_btn_click@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zzf_password_btn_click@2x.png"; sourceTree = "<group>"; };
+		EFA7E41C1BC7B036008C3A25 /* GesturesToUnlockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GesturesToUnlockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +105,12 @@
 		EF2D6BB01BC7AC7500F3D7B3 /* GesturesToUnlock */ = {
 			isa = PBXGroup;
 			children = (
+				EFA7E4161BC7AEC7008C3A25 /* zzf_password_bg@2x.png */,
+				EFA7E4171BC7AEC7008C3A25 /* zzf_password_btn_normal@2x.png */,
+				EFA7E4181BC7AEC7008C3A25 /* zzf_password_btn_click@2x.png */,
 				EF2D6BB11BC7AC7500F3D7B3 /* AppDelegate.swift */,
 				EF2D6BB31BC7AC7500F3D7B3 /* ViewController.swift */,
+				EFA7E41C1BC7B036008C3A25 /* GesturesToUnlockView.swift */,
 				EF2D6BB51BC7AC7500F3D7B3 /* Main.storyboard */,
 				EF2D6BB81BC7AC7500F3D7B3 /* Assets.xcassets */,
 				EF2D6BBA1BC7AC7500F3D7B3 /* LaunchScreen.storyboard */,
@@ -231,6 +243,9 @@
 				EF2D6BBC1BC7AC7500F3D7B3 /* LaunchScreen.storyboard in Resources */,
 				EF2D6BB91BC7AC7500F3D7B3 /* Assets.xcassets in Resources */,
 				EF2D6BB71BC7AC7500F3D7B3 /* Main.storyboard in Resources */,
+				EFA7E4191BC7AEC7008C3A25 /* zzf_password_bg@2x.png in Resources */,
+				EFA7E41B1BC7AEC7008C3A25 /* zzf_password_btn_click@2x.png in Resources */,
+				EFA7E41A1BC7AEC7008C3A25 /* zzf_password_btn_normal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA7E41D1BC7B036008C3A25 /* GesturesToUnlockView.swift in Sources */,
 				EF2D6BB41BC7AC7500F3D7B3 /* ViewController.swift in Sources */,
 				EF2D6BB21BC7AC7500F3D7B3 /* AppDelegate.swift in Sources */,
 			);
@@ -483,6 +499,7 @@
 				EF2D6BD81BC7AC7500F3D7B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF2D6BD91BC7AC7500F3D7B3 /* Build configuration list for PBXNativeTarget "GesturesToUnlockTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +508,7 @@
 				EF2D6BDB1BC7AC7500F3D7B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF2D6BDC1BC7AC7500F3D7B3 /* Build configuration list for PBXNativeTarget "GesturesToUnlockUITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +517,7 @@
 				EF2D6BDE1BC7AC7500F3D7B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -13,6 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let btnView = GesturesToUnlockView(frame: CGRectMake(0, 0, s_width, s_height));
+        self.view.addSubview(btnView);
     }
 
     override func didReceiveMemoryWarning() {

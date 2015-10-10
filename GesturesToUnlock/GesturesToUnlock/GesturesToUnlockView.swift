@@ -28,12 +28,20 @@ class GesturesToUnlockView: UIView {
 //    ////////////////////////////
     var pointValue : NSValue!;
     var dotView : NSMutableArray!;
- 
+    var shapepath : CAShapeLayer!;
+    var backView : UIView!;
+    
 //    初始化
     override init(frame: CGRect) {
         super.init(frame: frame);
-        self.putBtnsOnTheView();
+        
         self.backgroundColor = UIColor.clearColor();
+        self.layer.contents = UIImage(named: backgroundImageStr)?.CGImage;
+//        用第一种画线方法时不需要这个backView
+        backView = UIView(frame: frame);
+        self.addSubview(backView);
+        
+        self.putBtnsOnTheView();
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -67,11 +75,20 @@ class GesturesToUnlockView: UIView {
             secretArray = NSMutableArray(capacity: secretCodeNum);
         }
     }
-    
-    
+
 //  5
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
+        self.clearDotViews();
+        for temp in self.subviews{
+            if(temp is UIImageView){
+                let tempImageView = temp as! UIImageView;
+                tempImageView.highlighted = false;
+            }
+        }
+//        画图
+//        self.setNeedsDisplay();
+        self.attachment();
     }
     
     
@@ -83,24 +100,121 @@ class GesturesToUnlockView: UIView {
         let touchView = self.hitTest(pt!, withEvent: event);
         pointValue = NSValue.init(CGPoint: pt!);
 //        绘图
-        self.setNeedsDisplay();
-        
+//        self.setNeedsDisplay(); //第一种方法
+        self.attachment();//第2种方法
+//      判断是否是9个按钮之一
         if(touchView?.tag > 5000 && touchView?.tag <= 5000+(btnNum*btnNum)){
             var found = false;
             
             if(secretArray.count > 0){
                 for temp in secretArray{
-//                    判断是不是重复点击了View
+//                    判断是不是重复点击了已有的View
                    found = (temp.integerValue == touchView?.tag)
                     if(found){
                         break;
                     }
                 }
             }
+//            重复点击就返回
+            if(found){
+                return;
+            }
+//            
+            secretArray.addObject(NSNumber(int: Int32((touchView?.tag)!)));
+            self.addDotView(touchView!);
+            let tempImageView = touchView as! UIImageView;
+            tempImageView.highlighted = true;
+            
         }
-//        
-//        if()
+//          思路：手指在屏幕上面划过，判断这时候手指的有没有按在设置的9个按钮上。如果碰到了9个按钮中得一个，那么从数组中取出已经点击过的按钮，根据tag值判断是不是重复点击了。如果是重复点击的，那么久返回；如果是没有点击过的按钮，那么就把就把tag值存在数组里，并且高亮按钮。
+    }
+    
+//    连线画图
+    func attachment(){
+        if (pointValue == nil){
+            return;
+        }
+        if(dotView == nil){
+            return;
+        }
+        let bezierPath = UIBezierPath();
+        var lastDot : UIView!;
+        var from : CGPoint!;
+        
+        for temp in dotView{
+            from = temp.center;
+            if (lastDot == nil){
+                bezierPath.moveToPoint(from);
+            }else{
+                bezierPath.addLineToPoint(from);
+            }
+            lastDot = temp as! UIView;
+        }
+        
+        let pt = pointValue.CGPointValue();
+        bezierPath.addLineToPoint(pt);
+        if(shapepath == nil){
+            shapepath = CAShapeLayer();
+        }
+        shapepath.strokeColor = UIColor.redColor().CGColor;
+        shapepath.fillColor = UIColor.clearColor().CGColor;
+        shapepath.lineWidth = 5;
+        shapepath.path = bezierPath.CGPath;
+
+        backView.layer.addSublayer(shapepath);
+        backView.layer.zPosition = -1;
+    }
+    
+    override func drawRect(rect: CGRect) {
+        if(pointValue == nil){
+            return;
+        }
+        let context = UIGraphicsGetCurrentContext();
+        CGContextSetStrokeColorWithColor(context, UIColor.yellowColor().CGColor);
+        CGContextSetLineWidth(context, 4);
+        var lastDot:UIView!;
+        var from:CGPoint!;
+        if (dotView == nil){
+            return;
+        }
+        for temp in dotView
+        {
+            from  = (temp as? UIImageView)!.center;
+            if (lastDot == nil){
+                CGContextMoveToPoint(context, from.x, from.y)
+            }else{
+                CGContextAddLineToPoint(context, from.x, from.y);
+            }
+            lastDot = temp as! UIView;
+        }
+        let pt = pointValue.CGPointValue();
+        CGContextAddLineToPoint(context, pt.x, pt.y);
+        CGContextStrokePath(context);
+        pointValue = nil;
         
     }
+    
+//    添加按过的点到数组中存起来
+    func addDotView(dotview:UIView){
+        if(dotView == nil){
+            dotView = NSMutableArray(capacity: 0);
+        }
+        dotView.addObject(dotview);
+//        密码判断 do something
+        
+    }
+    
+//    大扫除
+    func clearDotViews(){
+        if(dotView == nil){
+            return;
+        }
+        dotView.removeAllObjects();
+        if(secretArray == nil){
+            return;
+        }
+        secretArray.removeAllObjects();
+    }
+    
     
 }
